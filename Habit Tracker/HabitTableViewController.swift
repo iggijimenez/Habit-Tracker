@@ -7,11 +7,17 @@
 
 import UIKit
 
+extension Habit {
+    var allEntries: [Entry] {
+        return entries?.allObjects as! [Entry]
+    }
+}
+
 class HabitTableViewController: UITableViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var models = [HabitItem]()
+    private var models = [Habit]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +51,8 @@ class HabitTableViewController: UITableViewController {
         let model = models[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         cell.textLabel?.text = model.name
+//        cell.commpletsionSwitch.isOn =
+//        cell.delegate = self
         
         // Configure the cell...
         
@@ -84,13 +92,54 @@ class HabitTableViewController: UITableViewController {
            
     }
     
+    func userDidFinishAHabit(at indexPath: IndexPath) {
+        let completedHabit = models[indexPath.row]
+        
+        let newItem = Entry(context: context)
+        newItem.timestamp = Date()
+        
+        completedHabit.addToEntries(newItem)
+        
+        do{
+            try context.save()
+//            getAllItems()
+        }
+        catch {
+            
+        }
+    }
     
+    func userDidUnfinishAHabit(at indexPath: IndexPath) {
+        let habitToUndo = models[indexPath.row]
+        
+        let entryIsTodaysDate: (Entry) -> Bool = { entry in
+            //        search for the entry that is from today
+            if false {
+                return true
+            }
+            
+            return false
+        }
+        
+        guard let entryToDelete = habitToUndo.allEntries.first(where: entryIsTodaysDate) else {
+            return
+        }
+        
+//        delete the entry from core data using context.delete(<#T##object: NSManagedObject##NSManagedObject#>)
+        
+        do {
+            try context.save()
+        }
+        catch {
+            
+        }
+    }
     
     //MARK: CORE DATA
     
     func getAllItems() {
         do {
-            models = try context.fetch(HabitItem.fetchRequest())
+            models = try context.fetch(Habit.fetchRequest())
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -101,7 +150,7 @@ class HabitTableViewController: UITableViewController {
     }
     
     func createItem(name: String) {
-        let newItem = HabitItem(context: context)
+        let newItem = Habit(context: context)
         newItem.name = name
         newItem.createdAt = Date()
         
@@ -115,7 +164,7 @@ class HabitTableViewController: UITableViewController {
         
     }
     
-    func deleteItem(item: HabitItem) {
+    func deleteItem(item: Habit) {
         context.delete(item)
         
         do{
@@ -128,7 +177,7 @@ class HabitTableViewController: UITableViewController {
         
     }
     
-    func updateItem(item: HabitItem, newName: String) {
+    func updateItem(item: Habit, newName: String) {
         item.name = newName
         
         do{

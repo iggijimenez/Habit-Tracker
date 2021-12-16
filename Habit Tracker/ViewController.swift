@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return table
     }()
     
-    private var models = [HabitItem]()
+    private var models = [Habit]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,7 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func getAllItems() {
         do {
-            models = try context.fetch(HabitItem.fetchRequest())
+            models = try context.fetch(Habit.fetchRequest())
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -107,7 +107,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func createItem(name: String) {
-        let newItem = HabitItem(context: context)
+        let newItem = Habit(context: context)
         newItem.name = name
         newItem.createdAt = Date()
         
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func deleteItem(item: HabitItem) {
+    func deleteItem(item: Habit) {
         context.delete(item)
         
         do{
@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    func updateItem(item: HabitItem, newName: String) {
+    func updateItem(item: Habit, newName: String) {
         item.name = newName
         
         do{
