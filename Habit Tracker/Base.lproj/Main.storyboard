@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HfR-IE-VrF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xkn-FB-4A4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Stats-->
+        <scene sceneID="oaO-DJ-Ee0">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mxu-C2-NxU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="bnC-Ad-uR7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UWB-lG-2Jb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ia6-F6-oKJ"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Stats" image="eye.square" catalog="system" id="jcI-hh-SkM"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-465" y="-1321"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="2o8-Fh-09d">
+            <objects>
+                <tabBarController id="Xkn-FB-4A4" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6JL-lb-Pc4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="HfR-IE-VrF" kind="relationship" relationship="viewControllers" id="sii-Fu-pjU"/>
+                        <segue destination="bnC-Ad-uR7" kind="relationship" relationship="viewControllers" id="Oa9-za-xQ9"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFw-c5-2Y4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1353" y="-1019"/>
+        </scene>
         <!--Habit Tracker-->
         <scene sceneID="Hjf-oT-iMw">
             <objects>
@@ -16,15 +51,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="WEn-qJ-Huw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="WEn-qJ-Huw" customClass="HabitTableViewCell" customModule="Habit_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WEn-qJ-Huw" id="jcf-gF-KsO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9b9-bm-hwk">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9b9-bm-hwk">
                                             <rect key="frame" x="355" y="6" width="51" height="31.5"/>
+                                            <connections>
+                                                <action selector="didToggleSwitch" destination="WEn-qJ-Huw" eventType="valueChanged" id="iPo-b4-UlS"/>
+                                            </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
@@ -33,6 +71,9 @@
                                         <constraint firstItem="9b9-bm-hwk" firstAttribute="centerY" secondItem="jcf-gF-KsO" secondAttribute="centerY" id="nFh-d8-6VQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="completionSwitch" destination="9b9-bm-hwk" id="Jaj-yj-nhK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,15 +82,48 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Habit Tracker" id="inu-FU-BRq"/>
+                    <connections>
+                        <segue destination="nfI-na-bT8" kind="show" identifier="show habit detail screen" id="obt-Q6-HAx"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0j-zO-bpg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="-17"/>
+            <point key="canvasLocation" x="372" y="-656"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Habit Detail Table View Controller-->
+        <scene sceneID="ucK-Ha-uS0">
+            <objects>
+                <tableViewController id="nfI-na-bT8" customClass="HabitDetailTableViewController" customModule="Habit_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Yyk-XP-75A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" id="5Vl-08-qgx">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Vl-08-qgx" id="JAn-hS-pao">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nfI-na-bT8" id="LIk-db-amJ"/>
+                            <outlet property="delegate" destination="nfI-na-bT8" id="MiX-HC-uuR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="zfC-b9-fKC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKg-Xl-9mX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="-656"/>
+        </scene>
+        <!--Task-->
         <scene sceneID="Xga-Ho-RH9">
             <objects>
                 <navigationController id="HfR-IE-VrF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Task" image="play.rectangle.fill" catalog="system" id="iyo-Wm-Wo5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IFC-n0-OLZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -60,12 +134,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fA-6G-gyR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1146" y="-17"/>
+            <point key="canvasLocation" x="-465" y="-656"/>
         </scene>
     </scenes>
     <resources>
+        <image name="eye.square" catalog="system" width="128" height="114"/>
+        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

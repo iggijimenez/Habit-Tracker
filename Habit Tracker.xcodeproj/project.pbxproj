@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4A59C64276BDE300092D8F1 /* HabitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A59C63276BDE300092D8F1 /* HabitTableViewController.swift */; };
+		A4A59C66276E5FA90092D8F1 /* HabitDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A59C65276E5FA90092D8F1 /* HabitDetailTableViewController.swift */; };
 		A4B7BFCB275ACE2000AF4C38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7BFCA275ACE2000AF4C38 /* AppDelegate.swift */; };
 		A4B7BFCD275ACE2000AF4C38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7BFCC275ACE2000AF4C38 /* SceneDelegate.swift */; };
 		A4B7BFD2275ACE2000AF4C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4B7BFD0275ACE2000AF4C38 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		A450317C27680F7F00F267A0 /* HabitItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitItem+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A450317D27680F7F00F267A0 /* HabitItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HabitItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A4A59C63276BDE300092D8F1 /* HabitTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewController.swift; sourceTree = "<group>"; };
+		A4A59C65276E5FA90092D8F1 /* HabitDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailTableViewController.swift; sourceTree = "<group>"; };
 		A4B7BFC7275ACE2000AF4C38 /* Habit Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Habit Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4B7BFCA275ACE2000AF4C38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4B7BFCC275ACE2000AF4C38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				A4B7BFCA275ACE2000AF4C38 /* AppDelegate.swift */,
 				A4B7BFCC275ACE2000AF4C38 /* SceneDelegate.swift */,
 				A4A59C63276BDE300092D8F1 /* HabitTableViewController.swift */,
+				A4A59C65276E5FA90092D8F1 /* HabitDetailTableViewController.swift */,
 				A4B7BFD0275ACE2000AF4C38 /* Main.storyboard */,
 				A4B7BFD6275ACE2400AF4C38 /* Assets.xcassets */,
 				A4B7BFD8275ACE2400AF4C38 /* LaunchScreen.storyboard */,
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4B7BFD5275ACE2000AF4C38 /* Habit_Tracker.xcdatamodeld in Sources */,
+				A4A59C66276E5FA90092D8F1 /* HabitDetailTableViewController.swift in Sources */,
 				A4A59C64276BDE300092D8F1 /* HabitTableViewController.swift in Sources */,
 				A4B7BFCB275ACE2000AF4C38 /* AppDelegate.swift in Sources */,
 				A4B7BFCD275ACE2000AF4C38 /* SceneDelegate.swift in Sources */,
